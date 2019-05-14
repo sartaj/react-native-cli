@@ -131,17 +131,9 @@ function createProject(projectName: string, options: Options, version: string) {
   fs.mkdirSync(projectName);
   process.chdir(projectName);
 
-  if (options.template) {
-    return createFromTemplate({
-      projectName,
-      templateName: options.template,
-      npm: options.npm,
-    });
-  }
-
   return createFromTemplate({
     projectName,
-    templateName: 'react-native',
+    templateName: options.template || 'react-native',
     version,
     npm: options.npm,
   });
